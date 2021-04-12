@@ -1,0 +1,13 @@
+@import "bootstrap/variables";
+@import "bicycles/variables";
+
+@mixin evenly-like {
+    display: flex !important;
+    justify-content: space-between !important;
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+    }
+}

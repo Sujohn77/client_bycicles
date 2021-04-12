@@ -1,0 +1,108 @@
+@import "bootstrap/mixins/breakpoints";
+
+@import "mixins/markdown";
+@import "mixins/buttons";
+@import "mixins/layout";
+@import "mixins/inputs";
+
+// bicycles CONTAINER
+
+@mixin container {
+    width: 100%;
+    @include media-breakpoint-up(sm) {
+        width: 750px;
+    }
+    @include media-breakpoint-up(md) {
+        width: 970px;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 1170px;
+    }
+}
+
+@mixin input-placeholder($_color) {
+    transition: combine_transitions((opacity, color), 0.3s, ease);
+    opacity: 1;
+    color: $_color;
+}
+
+@mixin input-placeholder-hide {
+    opacity: 0;
+    color: rgba(#ffffff, 0);
+}
+
+@mixin fade_input($_color) {
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+        @include input-placeholder($_color);
+    }
+
+    input::-moz-placeholder,
+    textarea::-moz-placeholder {
+        @include input-placeholder($_color);
+    }
+
+    input:-moz-placeholder,
+    textarea:-moz-placeholder {
+        @include input-placeholder($_color);
+    }
+
+    input:-ms-input-placeholder,
+    textarea:-ms-input-placeholder {
+        @include input-placeholder($_color);
+    }
+
+    input:focus::-webkit-input-placeholder,
+    textarea:focus::-webkit-input-placeholder {
+        @include input-placeholder-hide;
+    }
+
+    input:focus::-moz-placeholder,
+    textarea:focus::-moz-placeholder {
+        @include input-placeholder-hide;
+    }
+
+    input:focus:-moz-placeholder,
+    textarea:focus:-moz-placeholder {
+        @include input-placeholder-hide;
+    }
+
+    input:focus:-ms-input-placeholder,
+    textarea:focus:-ms-input-placeholder {
+        @include input-placeholder-hide;
+    }
+}
+
+@mixin text__shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+//
+// Deprecated, replace with `combine_transitions`:
+//
+@mixin make_transitions($transitions, $time: 0.2s, $type: "ease-out") {
+    $result: "";
+    @each $trans in $transitions {
+        @if str-length($result) > 0 {
+            $result: $result + ", " + ($trans + " " + $time + " " + $type);
+        } @else {
+            $result: $result + ($trans + " " + $time + " " + $type);
+        }
+    }
+    @debug "[MIXINS] transitions: #{$result}";
+    transition: unquote($result);
+}
+
+@mixin no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+@mixin box-shadow {
+    -webkit-box-shadow: 0px 0px 48px 0px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 0px 48px 0px rgba(34, 60, 80, 0.4);
+    box-shadow: 0px 0px 48px 0px rgba(34, 60, 80, 0.4);
+}

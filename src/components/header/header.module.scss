@@ -1,0 +1,40 @@
+@import "bootstrap/variables";
+@import "bootstrap/fonts";
+
+$header-background: #138cd7;
+
+.header {
+    display: grid;
+    grid-template-columns: 10fr 1fr 1fr;
+    column-gap: 15px;
+    background: $header-background;
+    padding: 15px 0;
+    color: #fff;
+    :global(.nav-btn) {
+        border: none;
+        font-size: 16px;
+        font-family: Lato, Arial, serif;
+        color: #fff;
+        text-transform: none;
+        text-decoration: none;
+
+        span {
+            outline: none;
+        }
+    }
+    .logo {
+        display: flex;
+        padding-left: 25%;
+        align-items: center;
+        img {
+            filter: invert(1);
+            cursor: pointer;
+        }
+        span {
+            cursor: pointer;
+            &:hover {
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+}

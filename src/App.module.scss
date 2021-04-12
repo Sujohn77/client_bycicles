@@ -1,0 +1,25 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.container,
+.edit_container {
+    @include box-shadow;
+    @include container;
+
+    padding: 15px;
+    max-width: 1360px;
+    margin: 15px auto;
+    > div.filter__trips {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+    }
+}
+
+.edit_container {
+    width: 100%;
+}

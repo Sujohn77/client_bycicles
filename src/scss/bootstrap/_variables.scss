@@ -1,0 +1,405 @@
+//=========================================================
+
+// Text stuff.
+$floating-menu-height: 60px;
+$header-font: "Lato";
+$regular-font: "Lato";
+
+$extra-small-font-size: 12px;
+$extra-small-icon-size: 14px;
+
+$small-font-size: 12px;
+$small-icon-size: 14px;
+
+$default-font-size: 14px;
+$default-icon-size: 18px;
+
+$medium-font-size: 16px;
+$medium-icon-size: 18px;
+
+$bigger-font-size: 18px;
+$bigger-icon-size: 20px;
+
+// Transitions
+$route-change__time: 500ms; // Header backgrounds
+
+//========================= Sizes =========================
+$header_default_size: 120px;
+
+// Modals
+$modal-lg: 900px !default;
+$modal-md: 600px !default;
+$modal-sm: 300px !default;
+
+// Riven
+$riven-negative: #98392d;
+$riven-positive: #39a57e;
+
+// Colors, for tests
+//$rich_black: #000F08;
+$eerie_black: #121420;
+$dark_gunmetal: #1b2432;
+//$licorice: #0E1116;
+//$dark_jungle_green: #092327;
+$raisin_black: #231123;
+$baby-powder: #fdfffc;
+$isabelline: #f0edee;
+$azureish_white: #dbe9ee;
+$toolbox: #6969b3;
+
+$violed_dark: #5b4a63;
+$violed: #8d7a96;
+
+//
+// Color system
+//
+
+// stylelint-disable
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$grays: () !default;
+$grays: map-merge(
+    (
+        "100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900
+    ),
+    $grays
+);
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge(
+    (
+        "blue": $blue,
+        "indigo": $indigo,
+        "purple": $purple,
+        "pink": $pink,
+        "red": $red,
+        "orange": $orange,
+        "yellow": $yellow,
+        "green": $green,
+        "teal": $teal,
+        "cyan": $cyan,
+        "white": $white,
+        "gray": $gray-600,
+        "gray-dark": $gray-800
+    ),
+    $colors
+);
+
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+    (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark
+    ),
+    $theme-colors
+);
+// stylelint-enable
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-900 !default;
+$yiq-text-light: $white !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-hover-media-query: false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes: true !default;
+$enable-print-styles: true !default;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+// stylelint-disable
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+    (
+        0: 0,
+        1: (
+            $spacer * 0.25
+        ),
+        2: (
+            $spacer * 0.5
+        ),
+        3: $spacer,
+        4: (
+            $spacer * 1.5
+        ),
+        5: (
+            $spacer * 3
+        )
+    ),
+    $spacers
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+$sizes: map-merge(
+    (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%
+    ),
+    $sizes
+);
+// stylelint-enable
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white !default;
+$body-color: $gray-900 !default;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: theme-color("primary") !default;
+//@debug "[Variablesred] theme-color: #{$link-color}";
+$link-decoration: none !default;
+
+$link-hover-decoration: underline !default;
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom: 1rem !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+    sm: 540px,
+    md: 730px,
+    lg: 970px,
+    xl: 1140px
+) !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.5 !default;
+
+$border-width: 1px !default;
+
+$border-radius: 0.25rem !default;
+$border-radius-lg: 0.3rem !default;
+$border-radius-sm: 0.2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg: theme-color("primary") !default;
+
+$caret-width: 0.3em !default;
+
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+$transition-collapse: height 0.35s ease !default;
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg: ($font-size-base * 1.25) !default;
+$font-size-sm: ($font-size-base * 0.875) !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+
+$headings-margin-bottom: 0.5rem !default;
+$headings-font-family: inherit !default;
+$headings-font-weight: 500 !default;
+$headings-line-height: 1.2 !default;
+$headings-color: inherit !default;
+
+$display1-size: 6rem !default;
+$display2-size: 5.5rem !default;
+$display3-size: 4.5rem !default;
+$display4-size: 3.5rem !default;
+
+$display1-weight: 300 !default;
+$display2-weight: 300 !default;
+$display3-weight: 300 !default;
+$display4-weight: 300 !default;
+$display-line-height: $headings-line-height !default;
+
+$lead-font-size: ($font-size-base * 1.25) !default;
+$lead-font-weight: 300 !default;
+
+$small-font-size: 80% !default;
+
+$text-muted: $gray-600 !default;
+
+$blockquote-small-color: $gray-600 !default;
+$blockquote-font-size: ($font-size-base * 1.25) !default;
+
+$hr-border-color: rgba($black, 0.1) !default;
+$hr-border-width: $border-width !default;
+
+$mark-padding: 0.2em !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$kbd-box-shadow: inset 0 -0.1rem 0 rgba($black, 0.25) !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+$list-inline-padding: 0.5rem !default;
+
+$mark-bg: #fcf8e3 !default;
+
+$hr-margin-y: $spacer !default;
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-cell-padding: 0.75rem !default;
+$table-cell-padding-sm: 0.3rem !default;
+
+$table-bg: transparent !default;
+$table-accent-bg: rgba($black, 0.05) !default;
+$table-hover-bg: rgba($black, 0.075) !default;
+$table-active-bg: $table-hover-bg !default;
+
+$table-border-width: $border-width !default;
+$table-border-color: $gray-300 !default;
+
+$table-head-bg: $gray-200 !default;
+$table-head-color: $gray-700 !default;
+
+$table-dark-bg: $gray-900 !default;
+$table-dark-accent-bg: rgba($white, 0.05) !default;
+$table-dark-hover-bg: rgba($white, 0.075) !default;
+$table-dark-border-color: lighten($gray-900, 7.5%) !default;
+$table-dark-color: $body-bg !default;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y: 0.375rem !default;
+$input-btn-padding-x: 0.75rem !default;
+$input-btn-line-height: $line-height-base !default;
+
+$input-btn-focus-width: 0.2rem !default;
+
+$input-btn-padding-y-sm: 0.25rem !default;
+$input-btn-padding-x-sm: 0.5rem !default;
+
+$input-btn-padding-y-lg: 0.5rem !default;
+$input-btn-padding-x-lg: 1rem !default;
+
+$input-btn-border-width: $border-width !default;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$modal_background: #1a2528;
+$modal-content__color: $gray-200;
+$modal_text-color: #138cd7;

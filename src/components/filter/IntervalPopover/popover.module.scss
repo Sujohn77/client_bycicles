@@ -1,0 +1,51 @@
+@import "bootstrap/variables";
+@import "bicycles/variables";
+@import "bootstrap/mixins";
+
+.tooltip {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #138cd7;
+    font-weight: bold;
+    padding: 15px;
+    margin-left: calc(-8.5px - 16px);
+    margin-top: 15px;
+    font-size: 13px;
+    width: 220px;
+    border-radius: 4px;
+    z-index: 1;
+    p {
+        margin-top: 1rem;
+    }
+    :global(.form-group) {
+        height: 30px;
+    }
+}
+
+.arrow,
+.arrow::before {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border: 1px solid $border_color;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    background: inherit;
+}
+
+.arrow {
+    position: relative;
+    visibility: hidden;
+    top: -179px;
+    left: calc(50% + -8px);
+}
+
+.arrow::before {
+    visibility: visible;
+    content: "";
+    transform: rotate(45deg);
+}
+
+.tooltip[data-popper-placement^="bottom"] > .arrow {
+    top: -4px;
+}

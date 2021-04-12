@@ -1,0 +1,86 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.trip__container {
+    border: 1px solid $text_color;
+    min-height: 250px;
+    width: 100%;
+    margin: 15px auto;
+    border: 1px solid $border_edit_color;
+
+    img {
+        // min-width: 50%;
+        height: 100%;
+    }
+    h3 {
+        color: $text_color;
+    }
+    p {
+        color: $text_color;
+    }
+    span {
+        color: $secondary__text;
+    }
+    > button {
+        color: $text_color;
+        border: 1px solid $text_color;
+        padding: 5px 30px;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+    .content {
+        display: flex;
+        overflow: hidden;
+        height: calc(100% - 50px);
+        text-overflow: ellipsis;
+
+        .description {
+            margin-left: 30px;
+        }
+    }
+    .controls {
+        border-top: 1px solid $border_edit_color;
+        display: flex;
+        align-items: center;
+        margin-top: 10rem;
+        padding: 15px;
+        > div {
+            border: 1px solid $border_color;
+            height: 36px;
+            border-radius: 10px;
+
+            display: flex;
+            > div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-left: 1px solid $border_color;
+                height: 35px;
+                padding: 0 15px;
+            }
+            > div:first-child {
+                background: green;
+                width: 35px;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+            > div:last-child {
+                border-right-left-radius: 10px;
+                border-right-left-radius: 10px;
+            }
+        }
+
+        svg {
+            width: 30px;
+            height: 30px;
+            color: #fff;
+        }
+    }
+}

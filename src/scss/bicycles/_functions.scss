@@ -1,0 +1,14 @@
+@function combine_transitions($transitions, $time: 0.2s, $type: 'ease-out') {
+  $result: '';
+  @each $trans in $transitions {
+    @if str-length($result) > 0 {
+      $result: $result + ', ' + ($trans + ' ' + $time + ' ' + $type);
+    } @else {
+      $result: $result + ($trans + ' ' + $time + ' ' + $type);
+    }
+  }
+  @return unquote($result);
+}
+@function hexToRGBString($hexColor) {
+  @return '#{red($hexColor)},#{green($hexColor)},#{blue($hexColor)}';
+}

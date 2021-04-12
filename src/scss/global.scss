@@ -1,0 +1,63 @@
+// Bootstrap
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/text";
+@import "bootstrap/size";
+// Bicycles
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+@import "bicycles/text";
+
+html,
+body {
+    min-height: 100vh;
+    font-family: $regular-font, sans-serif, Helvetica, Arial;
+    font-size: $default-font-size;
+    @-moz-document url-prefix() {
+        pre {
+            white-space: normal;
+        }
+    }
+}
+
+html {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        background: #071013;
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #44575f;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: $floating-menu-height;
+    section:nth-last-child(3) {
+        flex-grow: 5;
+    }
+}
+
+.flex--left,
+.flex--right {
+    flex-grow: 1;
+    flex-basis: 0;
+    position: relative;
+    img {
+        position: absolute;
+    }
+}
+
+.flex--root {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}

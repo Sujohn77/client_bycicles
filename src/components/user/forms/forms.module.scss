@@ -1,0 +1,27 @@
+@import "bootstrap/variables";
+@import "bicycles/variables";
+@import "bootstrap/mixins";
+
+.register__buttons {
+    button {
+        color: $button_text;
+        &:first-child {
+            background: $button_register;
+        }
+        &:last-child {
+            background: $button_cancel;
+        }
+    }
+}
+
+.register__form {
+    h1 {
+        font-size: 20px;
+    }
+    .register__description {
+        margin: 15px 0;
+        color: $secondary__text;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}

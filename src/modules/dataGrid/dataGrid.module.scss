@@ -1,0 +1,83 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.edit__table {
+    tr:first-child {
+        td {
+            border-top: none;
+        }
+    }
+    tr:last-child {
+        td {
+            border-bottom: none;
+        }
+    }
+    tr {
+        td:first-child {
+            border-left: none;
+        }
+        td:last-child {
+            border-right: none;
+        }
+        display: grid;
+        grid-template-columns: 30px 150px repeat(10, minmax(100px, 137px));
+        th {
+            background: #49aceafa;
+            color: #fff;
+        }
+        td,
+        th {
+            border: 1px solid darkturquoise;
+            padding: 10px 5px;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            height: 54px;
+            justify-content: center;
+        }
+
+        input[type="date"] {
+            width: 95px;
+        }
+        select {
+            width: 100%;
+        }
+    }
+    .photo__cell {
+        padding: 0;
+    }
+}
+
+.actions {
+    display: flex;
+    padding: 10px;
+    > div {
+        width: 35px;
+        height: 35px;
+        padding: 5px;
+        svg {
+            @include box-shadow;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    .success {
+        background: limegreen;
+        transition: all 0.2s;
+        &:hover {
+            background: gray;
+            filter: invert(1);
+        }
+    }
+    .danger {
+        background: red;
+        border-left: 1px solid #000;
+        &:hover {
+            background: gray;
+            filter: invert(1);
+        }
+    }
+}

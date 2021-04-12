@@ -1,0 +1,85 @@
+@import "bootstrap/variables";
+@import "bicycles/variables";
+@import "bootstrap/mixins";
+
+.modal {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+
+    font-size: 18px;
+
+    &.opened {
+        background-color: rgba($modal_background, 0.75);
+        visibility: visible;
+        opacity: 1;
+    }
+    @media (max-height: 1000px) {
+        overflow-y: auto;
+    }
+    button {
+        color: $modal_text-color;
+        margin-top: 1rem;
+        width: 100%;
+        border: 1px solid $border_color;
+    }
+}
+
+.widgetModal {
+    display: flex;
+    align-items: stretch;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+    margin: auto;
+    padding: 5px;
+    border-radius: 5px;
+    background: $modal-content__color;
+    h1 {
+        color: var(--color_h1);
+    }
+    h3 {
+        color: var(--color_h3);
+    }
+    h2 {
+        color: var(--color_h2);
+    }
+
+    @include media-breakpoint-up(md) {
+        width: $modal-sm;
+    }
+}
+
+.widgetModal__content {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 5px 40px;
+    width: 100%;
+    color: $modal_text-color;
+}
+
+.widgetModal__header {
+    background: var(--color_background--light);
+    h2,
+    h1,
+    h3 {
+        margin: 0;
+    }
+}
+
+.widgetModal__actions {
+    padding: 1em 0;
+    margin-top: auto;
+    :global(.btn) {
+        width: 100%;
+    }
+}

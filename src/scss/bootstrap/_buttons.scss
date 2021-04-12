@@ -1,0 +1,230 @@
+@import "bootstrap/variables";
+@import "bicycles/variables";
+@import "bicycles/functions";
+@import "bicycles/mixins";
+
+button,
+.btn {
+    outline: none;
+    box-shadow: none;
+    //transition: combine_transitions((color, background, box-shadow, border), 0.3s, ease);
+    border-radius: 2px;
+    &:hover {
+        outline: none;
+    }
+    &:active {
+        outline: none;
+    }
+    .wfm-icon + span {
+        margin-left: 10px;
+    }
+    span + .wfm-icon {
+        margin-left: 10px;
+    }
+    &.expandable {
+        span {
+            opacity: 0;
+            max-width: 0;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0 !important;
+            transition: combine_transitions(
+                (opacity, max-width, margin-left),
+                0.3s,
+                ease
+            );
+        }
+    }
+    &.expandable:hover,
+    &.expandable:active {
+        span {
+            opacity: 1;
+            max-width: 200px;
+            margin-left: 10px !important;
+        }
+    }
+}
+
+.btn__filter {
+    background: $content__link;
+    color: $content__button-text !important;
+    margin: 0 2px;
+    font-size: $default-font-size;
+    input[type="radio"] {
+        display: none;
+    }
+    &:hover {
+        color: $content__button-text !important;
+        background: $content__link-hover;
+    }
+    &:focus,
+    &:active {
+        color: $content__button-text !important;
+        background: $content__link-active;
+    }
+    &.active {
+        color: $content__button-text !important;
+        background: $content__link-active;
+    }
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.btn__action {
+    @extend .btn__filter;
+}
+
+.btn__light {
+    color: var(--color_link);
+    background: none;
+    //box-shadow: 0 0 0 1px transparentize($content__link, 0.75) inset;
+    border-color: rgba(var(--color_rgb_link), 0.25);
+    margin: 0 2px;
+    font-size: $default-font-size;
+    input[type="radio"] {
+        display: none;
+    }
+
+    &:hover {
+        color: $content__link-hover;
+        //box-shadow: 0 0 0 1px transparentize($content__link-hover, 0.75) inset;
+        border-color: transparentize($content__link-hover, 0.5);
+    }
+    &:focus,
+    &:active {
+        color: $content__link-active;
+        //box-shadow: 0 0 0 1px transparentize($content__link-active, 0.5) inset;
+        border-color: transparentize($content__link-active, 0.5);
+    }
+    &.active {
+        color: $content__link-active;
+        //box-shadow: 0 0 0 1px transparentize($content__link-active, 0.5) inset;
+        border-color: transparentize($content__link-active, 0.5);
+    }
+}
+
+.btn__action.red,
+.btn__filter.red {
+    background: $content__link--red;
+    &:hover {
+        background: $content__link-hover--red;
+    }
+    &:active {
+        background: $content__link-active--red;
+    }
+}
+
+.btn__light.red {
+    color: $content__link--red;
+    //box-shadow: 0 0 0 1px transparentize($content__link--red, 0.75) inset;
+    border-color: transparentize($content__link--red, 0.75);
+    &:hover {
+        color: $content__link-hover--red;
+        //box-shadow: 0 0 0 1px transparentize($content__link-hover--red, 0.5) inset;
+        border-color: transparentize($content__link-hover--red, 0.5);
+    }
+    &:focus,
+    &:active {
+        color: $content__link-active--red;
+        //box-shadow: 0 0 0 1px transparentize($content__link-active, 0.5) inset;
+        border-color: transparentize($content__link-active--red, 0.5);
+    }
+    &:active {
+        color: $content__link-active--red;
+        //box-shadow: 0 0 0 1px transparentize($content__link-active--red, 0.5) inset;
+        border-color: transparentize($content__link-active--red, 0.5);
+    }
+}
+
+.btn__inside-input {
+    background: white;
+    border: 1px solid $content__border;
+    color: $content__link !important;
+    border-left: 0;
+    border-radius: 0 5px 5px 0;
+    line-height: 20px;
+    font-size: $small-font-size;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .wfm-icon {
+        font-size: $default-icon-size;
+    }
+    &:hover {
+        border: 1px solid $content__border;
+        border-left: 0;
+        color: $content__link-hover !important;
+    }
+    &:focus,
+    &:active {
+        border: 1px solid $content__border;
+        border-left: 0;
+        color: $content__link-active !important;
+    }
+    &.active {
+        border: 1px solid $content__border;
+        border-left: 0;
+        color: $content__link-active !important;
+    }
+}
+
+.input-group {
+    .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: 0;
+    }
+}
+
+// Header
+.header {
+    .btn__light {
+        color: #7aa7a5;
+        //box-shadow: inset 0 0 0 1px transparentize(#7AA7A5, 0.7);
+        border-color: transparentize(#7aa7a5, 0.75);
+        &:hover {
+            color: #a3dddb;
+            //box-shadow: inset 0 0 0 1px transparentize(#a3dddb, 0.5);
+            border-color: transparentize(#a3dddb, 0.5);
+        }
+        &:focus,
+        &:active {
+            color: #acb8dd;
+            //box-shadow: inset 0 0 0 1px transparentize(#acb8dd, 0.5);
+            border-color: transparentize(#acb8dd, 0.5);
+        }
+        &.active {
+            color: #acb8dd;
+            //box-shadow: inset 0 0 0 1px transparentize(#acb8dd, 0.5);
+            border-color: transparentize(#acb8dd, 0.5);
+        }
+    }
+    .btn__light.red {
+        color: lighten($content__link--red, 20%);
+        //box-shadow: 0 0 0 1px transparentize($content__link--red, 0.75) inset;
+        border-color: transparentize(lighten($content__link--red, 20%), 0.75);
+        &:hover {
+            color: lighten($content__link-hover--red, 20%);
+            //box-shadow: 0 0 0 1px transparentize($content__link-hover--red, 0.5) inset;
+            border-color: transparentize(
+                lighten($content__link-hover--red, 20%),
+                0.5
+            );
+        }
+        &:focus,
+        &:active {
+            color: $content__link-active--red;
+            //box-shadow: 0 0 0 1px transparentize($content__link-active, 0.5) inset;
+            border-color: transparentize($content__link-active--red, 0.5);
+        }
+        &:active {
+            color: $content__link-active--red;
+            //box-shadow: 0 0 0 1px transparentize($content__link-active--red, 0.5) inset;
+            border-color: transparentize($content__link-active--red, 0.5);
+        }
+    }
+}

@@ -1,0 +1,34 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.actions {
+    display: flex;
+    padding: 10px;
+    > div {
+        width: 35px;
+        height: 35px;
+        padding: 5px;
+        svg {
+            @include box-shadow;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    .success {
+        background: limegreen;
+    }
+    .danger {
+        background: red;
+        border-left: 1px solid #000;
+    }
+}
+
+.create_row {
+    td div {
+        cursor: pointer;
+    }
+}
