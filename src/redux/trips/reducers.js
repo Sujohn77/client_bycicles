@@ -11,6 +11,7 @@ export const trips = (state = initialState, action) => {
                 ...state,
                 data: action.trips
             };
+
         default:
             return state;
     }

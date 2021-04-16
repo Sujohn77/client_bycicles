@@ -1,5 +1,5 @@
 import React from "react";
-import { guiders, placeHolders, routes } from "../../constants";
+import { guides, placeHolders, routes } from "../../constants";
 import SaveIcon from "@material-ui/icons/Save";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -9,30 +9,42 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { saveTrip, deleteTrip } from "./actions";
 import styles from "./createTrip.module.scss";
+import { getGuidesByNames } from "../../redux/guides/selectors";
 
 const mapStateToProps = state => {
     return {
-        lastTripId: state.trips.data[state.trips.data.length - 1].id
+        trip: state.createTrip.data,
+        lastTripId: state.trips.data[state.trips.data.length - 1].id,
+        guides: getGuidesByNames(state)
     };
 };
-
-let lastdate = new Date();
-lastdate.setDate(lastdate.getDate() + 7);
-lastdate.toLocaleDateString("en-US") + 7;
 
 @connect(mapStateToProps, { saveTrip, deleteTrip })
 class СreateTrip extends React.Component {
     state = {
         editable: true,
-        name: "Назва походу",
-        dateFrom: new Date().toLocaleDateString("en-US"),
-        dateTo: lastdate,
-        countBicycles: 20,
-        difficulty: 3,
-        guide: guiders[0],
-        route: routes[0],
         hiddenPhoto: true
     };
+
+    updateState() {
+        let { trip } = this.props;
+        this.setState({
+            id: trip.id,
+            name: trip.name,
+            dateFrom: trip.dateFrom,
+            dateTo: trip.dateTo,
+            countBicycle: trip.countBicycle,
+            difficulty: trip.difficulty,
+            price: trip.price,
+            guide: trip.guide,
+            route: trip.route,
+            photo: trip.img
+        });
+    }
+
+    componentDidMount() {
+        this.updateState();
+    }
 
     onChange = state => e => {
         this.setState({ [state]: e.currentTarget.value });
@@ -53,13 +65,27 @@ class СreateTrip extends React.Component {
     }
 
     render() {
-        const { name, dateFrom, dateTo, countBicycles, difficulty, guide, route, photo, hiddenPhoto } = this.state;
-        const { lastTripId, deleteTrip } = this.props;
+        const {
+            name,
+            dateFrom,
+            dateTo,
+            countBicycle,
+            difficulty,
+            guide,
+            route,
+            photo,
+            hiddenPhoto,
+            price
+        } = this.state;
+        const { lastTripId, deleteTrip, guides } = this.props;
         return (
             <tr className={styles.create_row}>
                 <td>№</td>
                 <td>
-                    <Input value={name} onChange={this.onChange(name)} />
+                    <Input value={name} onChange={this.onChange("name")} />
+                </td>
+                <td>
+                    <Input value={price} onChange={this.onChange("price")} />
                 </td>
                 <td>
                     <TextField
@@ -84,14 +110,14 @@ class СreateTrip extends React.Component {
                     />
                 </td>
                 <td>
-                    <Input value={countBicycles} onChange={this.onChange("countBicycles")} />
+                    <Input value={countBicycle} onChange={this.onChange("countBicycles")} />
                 </td>
                 <td>
                     <Input value={difficulty} onChange={this.onChange("difficulty")} />
                 </td>
                 <td>
                     <select value={guide} onChange={this.onChange("guide")}>
-                        {guiders.map(opt => {
+                        {guides.map(opt => {
                             return <option value={opt}>{opt}</option>;
                         })}
                     </select>

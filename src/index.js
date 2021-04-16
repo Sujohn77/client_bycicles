@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./redux/store";
-import Header from "./components/header/Header";
 
 import { Col } from "./components/layout/grid";
 

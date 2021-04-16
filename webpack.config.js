@@ -25,7 +25,8 @@ module.exports = {
         progress: true,
         headers: {
             "Access-Control-Allow-Origin": "*"
-        }
+        },
+        historyApiFallback: true
     },
     resolve: {
         fallback: {

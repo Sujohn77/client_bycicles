@@ -24,7 +24,7 @@
             border-right: none;
         }
         display: grid;
-        grid-template-columns: 30px 150px repeat(10, minmax(100px, 137px));
+        grid-template-columns: 30px 150px repeat(11, minmax(100px, 125px));
         th {
             background: #49aceafa;
             color: #fff;
@@ -55,8 +55,8 @@
     display: flex;
     padding: 10px;
     > div {
-        width: 35px;
-        height: 35px;
+        min-width: 31px;
+        height: 31px;
         padding: 5px;
         svg {
             @include box-shadow;
@@ -65,19 +65,25 @@
         }
     }
     .success {
-        background: limegreen;
+        background: $btn_success;
         transition: all 0.2s;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
         &:hover {
             background: gray;
             filter: invert(1);
         }
     }
     .danger {
-        background: red;
+        background: $btn_danger;
         border-left: 1px solid #000;
         &:hover {
             background: gray;
             filter: invert(1);
         }
+    }
+    > div:last-child {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
     }
 }

@@ -45,7 +45,6 @@ const Filter = ({ labelText, type, values = [], className = "" }) => {
                                 setValueTo={setValueTo}
                                 setFilterValue={setFilterValue}
                                 onClose={() => {
-                                    debugger;
                                     setShowPopover(false);
                                 }}
                             />

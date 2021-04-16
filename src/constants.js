@@ -9,15 +9,16 @@ let date = new Date();
 date.setDate(date.getDate() + 7);
 date.toLocaleDateString("en-US") + 7;
 // .replace(/\./g, "/")
-export const guiders = ["Aндрійко К.М.", "Бобро У.Е.", "Динилор А.Й."];
+export const guides = ["Aндрійко К.М.", "Бобро У.Е.", "Динилор А.Й."];
 export const routes = ["Грузія 520км", "Анталія 300км", "Венеція 200км"];
 export const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Назва", width: 110 },
+    { field: "price", headerName: "Ціна", width: 60 },
     { field: "dateFrom", headerName: "Дата початку", width: 135 },
     { field: "dateTo", headerName: "Дата закінчення", width: 145 },
     {
-        field: "countBycicle",
+        field: "countBicycle",
         headerName: "Кількість велосипедів",
         type: "number",
         width: 150,
@@ -30,7 +31,7 @@ export const columns = [
         sortable: false,
         width: 120
     },
-    { field: "guiders", headerName: "Керівники", width: 120 },
+    { field: "guide", headerName: "Керівник", width: 120 },
     { field: "route", headerName: "Маршрут", width: 110 },
     { field: "tourists", headerName: "Туристи", width: 120 },
     { field: "img", headerName: "Фото", width: 90 },

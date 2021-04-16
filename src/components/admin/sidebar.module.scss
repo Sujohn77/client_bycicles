@@ -1,0 +1,45 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.sidebar {
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    width: 3em;
+    border: 1px solid $border_color;
+    div {
+        cursor: pointer;
+        color: initial;
+
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 25px;
+        }
+        &:hover {
+            background: lightgray;
+        }
+    }
+}
+
+:global(.edit_trips) {
+    > div:first-child {
+        img {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(153deg) brightness(95%) contrast(80%);
+        }
+    }
+}
+
+:global(.edit_guides) {
+    > div:nth-child(2) {
+        img {
+            filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(153deg) brightness(95%) contrast(80%);
+        }
+    }
+}

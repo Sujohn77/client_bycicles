@@ -1,2 +1,2 @@
-export { UserTripPage } from "./UserTripPage";
+export { TripResult } from "./TripResult";
 export { EditTripPage } from "./EditTripPage";

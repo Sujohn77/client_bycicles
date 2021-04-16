@@ -6,15 +6,15 @@ import { fetchStatus } from "modules/preLoader/reducers";
 import { registrationForm } from "components/user/register/actions";
 import { reducer as formReducer } from "redux-form";
 import { trips } from "redux/trips/reducers";
-
-// const forms = combineReducers({
-//     [registrationForm.formName]: registrationForm.reducers
-// });
+import { guides } from "redux/guides/reducers";
+import { createTrip } from "components/createTrip/reducers";
 
 export const reducers = combineReducers({
     app,
     currentUser,
     fetchStatus,
     trips,
-    form: formReducer
+    form: formReducer,
+    createTrip,
+    guides
 });

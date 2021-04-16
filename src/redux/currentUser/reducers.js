@@ -15,7 +15,8 @@ export const currentUser = (state = initialState, action) => {
         case UPDATE_USER:
             return {
                 ...state,
-                userInfo: action.user_state
+                userInfo: action.user_state,
+                access: action.accessUser
             };
         default:
             return state;

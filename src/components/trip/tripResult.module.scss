@@ -5,82 +5,73 @@
 @import "bootstrap/reboot";
 @import "bicycles/mixins";
 
-.trip__container {
-    border: 1px solid $text_color;
-    min-height: 250px;
+@keyframes button {
+    0% {
+        width: 0;
+        padding: 0;
+    }
+
+    100% {
+        width: 110px;
+        padding: 6px 8px;
+    }
+}
+
+.trip__result {
+    max-width: 575px;
+    border: 1px solid $border_edit_color;
+    height: 300px;
+    transition: all 0.3s ease-in;
     width: 100%;
     margin: 15px auto;
-    border: 1px solid $border_edit_color;
-
-    img {
-        // min-width: 50%;
-        height: 100%;
-    }
-    h3 {
-        color: $text_color;
-    }
-    p {
-        color: $text_color;
-    }
-    span {
-        color: $secondary__text;
-    }
-    > button {
-        color: $text_color;
-        border: 1px solid $text_color;
-        padding: 5px 30px;
-    }
-    .header {
+    padding: 15px;
+    cursor: pointer;
+    .buttons {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
+    }
+    button {
+        width: min-content;
+        white-space: nowrap;
+        background: lightblue;
+        height: 40px;
+        &:hover {
+            background: blue;
+            span {
+                color: #fff;
+            }
+        }
+    }
+    .accept {
+        transition: all 0.3s ease-in;
+        width: 0px;
+        display: none;
+        margin-left: 1rem;
+        min-width: initial;
     }
     .content {
         display: flex;
         overflow: hidden;
-        height: calc(100% - 50px);
+        height: calc(100% - 65px);
         text-overflow: ellipsis;
 
         .description {
             margin-left: 30px;
         }
     }
-    .controls {
-        border-top: 1px solid $border_edit_color;
+    .header {
         display: flex;
-        align-items: center;
-        margin-top: 10rem;
-        padding: 15px;
-        > div {
-            border: 1px solid $border_color;
-            height: 36px;
-            border-radius: 10px;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
 
-            display: flex;
-            > div {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-left: 1px solid $border_color;
-                height: 35px;
-                padding: 0 15px;
-            }
-            > div:first-child {
-                background: green;
-                width: 35px;
-                border-bottom-left-radius: 10px;
-                border-top-left-radius: 10px;
-            }
-            > div:last-child {
-                border-right-left-radius: 10px;
-                border-right-left-radius: 10px;
-            }
-        }
-
-        svg {
-            width: 30px;
-            height: 30px;
-            color: #fff;
+    &:hover {
+        @include box-shadow;
+        border: 1px solid $border_color;
+        .accept {
+            width: min-content;
+            display: block;
+            animation: button 0.3s ease-in-out;
+            overflow: hidden;
         }
     }
 }

@@ -46,8 +46,32 @@ export const signOut = ({ onSuccess }) => (dispatch, getState) => {
     );
 };
 
+export const isAuth = json => (dispatch, getState) => {
+    let token = localStorage.getItem("token");
+    dispatch(
+        fetcher("/auth/me", {
+            method: "GET",
+            headers: {
+                authorization: token
+            },
+            authorization: token,
+            params: "what a fuck",
+            onSuccess: result => {
+                console.log("[login] user signIn success");
+                console.log(result);
+
+                dispatch(updateUser(result["payload"]["user"]));
+            },
+            onError: errors => {
+                console.log("[Registration] Errors");
+                console.log(errors);
+            }
+        })
+    );
+};
+
 export const updateUser = userState => {
-    const accessUser = (userState.userName = "admin" ? access.admin : access.user);
+    const accessUser = userState.userName === "admin" ? access.admin : access.user;
     return {
         type: UPDATE_USER,
         user_state: userState,

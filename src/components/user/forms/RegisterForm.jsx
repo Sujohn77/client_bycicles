@@ -27,7 +27,7 @@ class Form extends React.Component {
                     </div>
                     <div className="d-flex flex-column">
                         <label htmlFor="email">Пошта</label>
-                        <Field placeholder={"Введіть пошту"} name="email" component="input" type="password" />
+                        <Field placeholder={"Введіть пошту"} name="email" component="input" type="text" />
                     </div>
                     <div className="d-flex flex-column">
                         <label htmlFor="password">Пароль</label>

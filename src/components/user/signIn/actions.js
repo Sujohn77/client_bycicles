@@ -40,8 +40,9 @@ export const signIn = json => (dispatch, getState) => {
             onSuccess: result => {
                 console.log("[login] user signIn success");
                 console.log(result);
+
                 dispatch(updateUser(result["payload"]["user"]));
-                localStorage.set("token", result["payload"]["token"]);
+                localStorage.setItem("token", result["payload"]["token"]);
             },
             onError: errors => {
                 console.log("[Registration] Errors");

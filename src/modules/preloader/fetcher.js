@@ -14,9 +14,12 @@ export const fetcher = (
         queryParams = {},
         json = null,
         onSuccess = null,
-        onError = null
+        onError = null,
+        headers = {},
+        authorization
         // language = null
-    }
+    },
+    ...others
 ) => (dispatch, getState) => {
     // Build Api endpoint using params
     for (let key in params) {
@@ -56,9 +59,11 @@ export const fetcher = (
     let headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
+        authorization: authorization ? authorization : null
         // Language: language
     };
+
     // Protect by CSRF if needed.
     // if (["POST", "PUT", "PATCH", "DELETE"].includes(method)) {
     //     headers["X-CSRFToken"] = getState().application.csrf;

@@ -5,7 +5,8 @@ $header-background: #138cd7;
 
 .header {
     display: grid;
-    grid-template-columns: 10fr 1fr 1fr;
+    grid-template-columns: 8fr 2fr 1fr 1fr;
+    align-items: center;
     column-gap: 15px;
     background: $header-background;
     padding: 15px 0;

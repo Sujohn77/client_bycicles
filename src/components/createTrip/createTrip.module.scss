@@ -9,8 +9,8 @@
     display: flex;
     padding: 10px;
     > div {
-        width: 35px;
-        height: 35px;
+        min-width: 31px;
+        height: 31px;
         padding: 5px;
         svg {
             @include box-shadow;
@@ -19,16 +19,25 @@
         }
     }
     .success {
-        background: limegreen;
+        background: $btn_success;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
     }
     .danger {
-        background: red;
+        background: $btn_danger;
         border-left: 1px solid #000;
+    }
+    > div:last-child {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
     }
 }
 
 .create_row {
     td div {
         cursor: pointer;
+    }
+    input {
+        width: 100%;
     }
 }
