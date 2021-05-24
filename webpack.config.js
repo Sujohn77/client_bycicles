@@ -12,9 +12,10 @@ module.exports = {
     entry: path.resolve(__dirname, "./src/index.js"),
     mode: "development",
     devtool: "source-map",
+
     output: {
-        path: path.resolve(__dirname, "dist"),
-        publicPath: "/dist/",
+        path: path.resolve(__dirname, "public"),
+        publicPath: "/public/",
         filename: "bundle.js"
     },
     devServer: {
@@ -23,6 +24,7 @@ module.exports = {
         port: 3000,
         watchContentBase: true,
         progress: true,
+        open: true,
         headers: {
             "Access-Control-Allow-Origin": "*"
         },
@@ -38,7 +40,9 @@ module.exports = {
             http: false,
             https: false,
             stream: false,
-            crypto: false
+            crypto: false,
+            os: false,
+            vm: false
         },
         extensions: [".js", ".jsx", ".json"],
         modules: ["node_modules", "src", "public"]
@@ -150,7 +154,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./public/index.html"
+            template: path.resolve(__dirname, "public", "index.html")
         })
         // new MiniCssExtractPlugin({
         //     filename: "css/[name].[contenthash].css",

@@ -1,0 +1,64 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.edit_container {
+    border: 1px solid $text_color;
+    min-height: 250px;
+    width: 100%;
+    margin: 15px auto;
+    border: 1px solid $border_edit_color;
+    tr {
+        grid-template-columns: 160px repeat(5, minmax(100px, 125px)) 160px 160px repeat(4, minmax(100px, 125px));
+    }
+    .controls {
+        border-top: 1px solid $border_edit_color;
+
+        display: flex;
+        align-items: center;
+        margin-top: 4rem;
+
+        padding: 15px;
+
+        > div {
+            > div:first-child {
+                border-left: none;
+            }
+            border: 1px solid $border_color;
+            height: 40px;
+            border-radius: 10px;
+            .create__button {
+                background: $btn_success;
+                width: 45px;
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+            display: flex;
+            :global(.pagination) {
+                > div {
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    border-left: 1px solid $border_color;
+                    height: 35px;
+                    padding: 0 15px;
+                }
+
+                > div:last-child {
+                    border-right-left-radius: 10px;
+                    border-right-left-radius: 10px;
+                }
+            }
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            color: #fff;
+        }
+    }
+}

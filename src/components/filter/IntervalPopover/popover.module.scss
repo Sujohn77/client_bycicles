@@ -8,14 +8,18 @@
     border: 1px solid #138cd7;
     font-weight: bold;
     padding: 15px;
-    margin-left: calc(-8.5px - 16px);
+    margin-left: calc(-8.5px - 30px);
     margin-top: 15px;
     font-size: 13px;
     width: 220px;
     border-radius: 4px;
     z-index: 1;
+    > div {
+        display: flex;
+    }
     p {
         margin-top: 1rem;
+        margin-right: 1rem;
     }
     :global(.form-group) {
         height: 30px;
@@ -36,7 +40,7 @@
 .arrow {
     position: relative;
     visibility: hidden;
-    top: -179px;
+    top: -119px;
     left: calc(50% + -8px);
 }
 

@@ -7,45 +7,37 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloseIcon from "@material-ui/icons/Close";
 import СreateTrip from "components/createTrip/СreateTrip";
-
+import PropTypes from "prop-types";
 import styles from "./dataGrid.module.scss";
-import { deleteTrip, editTrip } from "../../components/createTrip/actions";
+
 import { connect } from "react-redux";
-import { SelectButton } from "../../components/layout/buttons/SelectButton";
 
-@connect(null, { editTrip, deleteTrip })
+import { apiRoot } from "constants";
+import SearchRow from "components/searchRow/SearchRow";
+import { difficulties } from "../../constants";
+import СreateGuide from "../../components/createGuide/СreateGuide";
+
 class DataGrid extends Component {
-    renderCell(data, attr, key, index) {
-        if (attr === "id") {
-            return <td key={key}>{index + 1}</td>;
-        }
-        if (attr === "img" && data[attr]) {
-            return (
-                <td className={styles.photo__cell} key={key}>
-                    <img src={data[attr]} alt="" />
-                </td>
-            );
-        }
-        if (attr === "tourists" && data[attr]) {
-            return (
-                <td className={styles.photo__cell} key={key}>
-                    <SelectButton options={data[attr]} label="Туристи" />
-                </td>
-            );
-        }
-        if ((data[attr] && data[attr].length !== 0) || data[attr] === 0) {
-            return <td key={key}>{data[attr]}</td>;
-        }
-        return <td key={key}>-</td>;
-    }
-
-    edit(trip) {
+    edit(item) {
         this.props.setCreateLine(true);
-        this.props.editTrip(trip);
+        this.props.editItem(item);
     }
 
     render() {
-        let { columns, rows, createLine, deleteTrip, setCreateLine } = this.props;
+        let {
+            columns,
+            rows,
+            createLine,
+            deleteItem,
+            setCreateLine,
+            filters,
+            setFilters,
+            renderCell,
+            searchColumns,
+            type,
+            pageSize,
+            currentPage
+        } = this.props;
         let attrArray = [];
 
         columns = columns.map((col, key) => {
@@ -53,28 +45,33 @@ class DataGrid extends Component {
             return <th key={key}>{col.headerName}</th>;
         });
 
-        rows = rows.map((trip, key1) => {
-            return (
-                <tr key={trip.id}>
-                    {attrArray.map((attr, key2) => {
-                        if (attr === "actions") {
-                            return (
-                                <td key={trip.id + key2} className={styles.actions}>
-                                    <div className={styles.success}>
-                                        <EditIcon onClick={() => this.edit(trip)} />
-                                    </div>
-                                    <div className={styles.danger} onClick={() => deleteTrip({ id: trip.id })}>
-                                        <DeleteIcon />
-                                    </div>
-                                </td>
-                            );
-                        }
+        rows =
+            rows &&
+            rows.map((row, rowKey) => {
+                return (
+                    <tr key={row._id}>
+                        {attrArray.map((attr, colKey) => {
+                            if (attr === "actions") {
+                                return (
+                                    <td key={row._id + colKey} className={styles.actions}>
+                                        <div className={styles.success}>
+                                            <EditIcon onClick={() => this.edit(row)} />
+                                        </div>
+                                        <div
+                                            className={styles.danger}
+                                            onClick={() => deleteItem({ id: row._id }, currentPage, pageSize)}
+                                        >
+                                            <DeleteIcon />
+                                        </div>
+                                    </td>
+                                );
+                            }
 
-                        return this.renderCell(trip, attr, trip.id + key2, key1);
-                    })}
-                </tr>
-            );
-        });
+                            return renderCell(row, attr, row._id + colKey, rowKey);
+                        })}
+                    </tr>
+                );
+            });
 
         return (
             <table className={styles.edit__table}>
@@ -82,12 +79,22 @@ class DataGrid extends Component {
                     <tr>{columns}</tr>
                 </thead>
                 <tbody>
-                    {createLine && <СreateTrip setCreateLine={setCreateLine} />}
+                    {filters && (
+                        <SearchRow type={type} filters={filters} setFilters={setFilters} columns={searchColumns} />
+                    )}
+                    {createLine && type === "hike" && <СreateTrip setCreateLine={setCreateLine} />}
+                    {createLine && type === "guide" && (
+                        <СreateGuide setCreateLine={setCreateLine} pageSize={pageSize} currentPage={currentPage} />
+                    )}
                     {rows}
                 </tbody>
             </table>
         );
     }
 }
+
+DataGrid.propTypes = {
+    renderCell: PropTypes.func
+};
 
 export default DataGrid;

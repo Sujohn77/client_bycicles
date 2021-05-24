@@ -1,0 +1,49 @@
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins/breakpoints';
+@import 'warframe/variables';
+@import 'warframe/functions';
+@import 'warframe/mixins';
+
+/**
+ * Created by kyckyc on 31.01.19.
+ */
+
+.form__select {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+//select {
+//  background-color: white;
+//  color: $content__link;
+//  padding: 10px;
+//  cursor: pointer;
+//  width: 100%;
+//  outline: none;
+//  transition: combine_transitions((color, background, box-shadow), 0.3s, ease);
+//  border: 1px solid #ced4da;
+//  border-radius: 3px;
+//  option {
+//    background-color: white;
+//    color: $dark-cyan__link-active;
+//    padding: 10px;
+//    border: 0;
+//    outline: 0;
+//  }
+//  option:hover{
+//    background-color: $dark-cyan__link-active;
+//  }
+//}
+//select:hover {
+//  //background-color: $dark-cyan__link-active;
+//  color: $dark-cyan__link-active;
+//}
+
+select:-moz-focusring {
+  color: transparent !important;
+  text-shadow: 0 0 0 #000 !important;
+  background-image: none !important;
+  border: 0;
+}

@@ -1,0 +1,37 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.sidebar {
+    position: absolute;
+    height: 100vh;
+    left: 0;
+    width: 3em;
+    border-right: 1px solid $border_color;
+    padding: 15px 0;
+    div {
+        cursor: pointer;
+        color: initial;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 25px;
+        }
+        &:hover {
+            background: lightgray;
+        }
+    }
+    img {
+        filter: invert(48%) sepia(23%) saturate(3207%) hue-rotate(162deg) brightness(55%) contrast(40%);
+    }
+    :global(.active) {
+        img {
+            filter: invert(90%) sepia(13%) saturate(3207%) hue-rotate(153deg) brightness(95%) contrast(80%);
+        }
+    }
+}

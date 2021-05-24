@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./popover.module.scss";
-import { Input } from "@material-ui/core";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Datepicker from "modules/DatePicker/Datepicker";
+import { Input } from "@material-ui/core";
 
 const checkValues = (first, sec) => {
     if (first) return first;
@@ -12,12 +12,13 @@ const checkValues = (first, sec) => {
     return false;
 };
 
-const IntervalPopover = ({ onClose, setFilterValue, toValue, fromValue, setValueFrom, setValueTo }) => {
+const IntervalPopover = ({ onClose, setFilterValue, toValue, fromValue, setValueFrom, setValueTo, type }) => {
     const ref = useRef(null);
     const [firstRender, setFirstRender] = useState(false);
-    const onChange = ({ from, to }) => {
-        const fromVal = checkValues(fromValue, from);
-        const toVal = checkValues(toValue, to);
+
+    useEffect(() => {
+        const fromVal = fromValue;
+        const toVal = toValue;
         if (fromVal && toVal) {
             setFilterValue(fromVal + "-" + toVal);
         } else if (fromVal) {
@@ -25,26 +26,35 @@ const IntervalPopover = ({ onClose, setFilterValue, toValue, fromValue, setValue
         } else {
             setFilterValue(toVal);
         }
-    };
+    }, [toValue, fromValue]);
 
     const onChangeFrom = value => {
+        if (type === "text") {
+            value = value.currentTarget.value;
+        }
         setValueFrom(value);
-        onChange({ from: value, to: toValue });
     };
 
     const onChangeTo = value => {
+        if (type === "text") {
+            value = value.currentTarget.value;
+        }
         setValueTo(value);
-        onChange({ from: fromValue, to: value });
+    };
+
+    const onClick = e => {
+        if (firstRender && !ref.current.contains(e.target) && !e.target.className.includes("sc")) {
+            onClose();
+        } else {
+            setFirstRender(true);
+        }
     };
 
     useEffect(() => {
-        document.addEventListener("click", e => {
-            if (firstRender && !ref.current.contains(e.target)) {
-                onClose();
-            } else {
-                setFirstRender(true);
-            }
-        });
+        document.addEventListener("click", onClick);
+        return () => {
+            document.removeEventListener("click", onClick);
+        };
     }, [firstRender]);
 
     return (
@@ -52,11 +62,15 @@ const IntervalPopover = ({ onClose, setFilterValue, toValue, fromValue, setValue
             <div>
                 <p>От</p>
                 <div>
-                    <Datepicker label="От" value={fromValue} onDateChanged={onChangeFrom} />
+                    {type === "text" && <Input label="От" value={fromValue} onChange={onChangeFrom} />}
+                    {type === "date" && <Datepicker label="От" value={fromValue} onDateChanged={onChangeFrom} />}
                 </div>
+            </div>
+            <div>
                 <p>До</p>
                 <div>
-                    <Datepicker label="До" value={toValue} onDateChanged={onChangeTo} />
+                    {type === "text" && <Input label="До" value={toValue} onChange={onChangeTo} />}
+                    {type === "date" && <Datepicker label="До" value={toValue} onDateChanged={onChangeTo} />}
                 </div>
             </div>
             <div className={styles.arrow}></div>

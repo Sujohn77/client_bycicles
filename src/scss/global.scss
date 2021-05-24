@@ -9,7 +9,7 @@
 @import "bootstrap/reboot";
 @import "bicycles/mixins";
 @import "bicycles/text";
-
+@import "bicycles/buttons";
 html,
 body {
     min-height: 100vh;
@@ -60,4 +60,12 @@ html {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+}
+
+select {
+    min-width: 150px;
+}
+
+span {
+    text-transform: initial;
 }

@@ -1,0 +1,48 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+:global(.btn) {
+    background: #138cd7;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.hike__detail {
+    width: 100%;
+    max-width: 960px;
+    padding: 15px;
+    p {
+        color: initial;
+    }
+    h3 {
+        white-space: nowrap;
+    }
+
+    img {
+        max-height: 430px;
+        object-fit: cover;
+    }
+
+    .info {
+        margin-top: 4rem;
+        padding: 0 15px;
+        width: 50%;
+        > div {
+            border-bottom: 1px solid #000;
+            padding: 5px;
+        }
+    }
+    .accept {
+        white-space: nowrap;
+        background: #e1e4e7;
+        height: 40px;
+    }
+    input,
+    select {
+        width: 100%;
+    }
+}

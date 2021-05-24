@@ -1,8 +1,8 @@
-/**
- * Created by kyckyc on 2/10/17.
- */
+import React from "react";
 import { FormConstructor } from "modules/formConstructor";
 import { fetcher } from "modules/preLoader/fetcher";
+import { FormattedMessage } from "react-intl";
+import { stopSubmit } from "redux-form";
 import { updateUser } from "redux/currentUser/actions";
 // import { getLanguage } from "modules/localizator/selectors";
 
@@ -32,21 +32,29 @@ function validatePasswords(formState) {
 }
 
 export const signUp = json => (dispatch, getState) => {
-    let { passwordAgain, ...user } = json;
+    let { passwordRepeat, ...user } = json;
+    if (json.password !== json.passwordRepeat) {
+        dispatch(stopSubmit("register", { _error: "Passwords are mismatched" }));
+        return;
+    }
     dispatch(
-        fetcher("/auth/registration", {
+        fetcher("auth/registration", {
             method: "POST",
             indication: true,
             json: json,
             onSuccess: result => {
-                console.log("[Registration] user register success");
-                console.log(result);
-                dispatch(updateUser(user));
-                localStorage.set("token", result["payload"]["token"]);
+                if (result.message) {
+                    dispatch(setFetchStatus(result.message));
+                }
+
+                localStorage.setItem("token", result["payload"]["token"]);
+                localStorage.setItem("verifyCode", result["payload"]["code"]);
+                dispatch(updateUser(result["payload"]["user"]));
             },
-            onError: errors => {
-                console.log("[Registration] Errors");
-                console.log(errors);
+            onError: error => {
+                if (error) {
+                    dispatch(stopSubmit("register", { _error: <FormattedMessage id={error} /> }));
+                }
             }
         })
     );

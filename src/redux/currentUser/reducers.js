@@ -1,12 +1,14 @@
-import { access } from "../../constants";
-import { SIGN_IN, SIGN_UP, UPDATE_USER } from "./actions";
+import { access } from "constants";
+import { RESET_USER, SIGN_IN, SIGN_UP, UPDATE_USER } from "./actions";
 
 let initialState = {
-    userInfo: {
+    data: {
         userName: "",
         email: "",
-        password: ""
+        password: "",
+        verified: false
     },
+    code: localStorage.getItem("verifyCode") || null,
     access: access.annonymous
 };
 
@@ -15,8 +17,18 @@ export const currentUser = (state = initialState, action) => {
         case UPDATE_USER:
             return {
                 ...state,
-                userInfo: action.user_state,
+                data: {
+                    ...state.data,
+                    ...action.data
+                },
+
                 access: action.accessUser
+            };
+        case RESET_USER:
+            return {
+                ...state,
+                data: {},
+                access: action.annonymous
             };
         default:
             return state;

@@ -1,20 +1,13 @@
-import { routes } from "../../constants";
 import { UPDATE_CREATE_TRIP_DATA, SET_DATA_COLLECTIONS, SET_GUIDE_NAMES } from "./actions";
-
-let lastdate = new Date();
-lastdate.setDate(lastdate.getDate() + 7);
-lastdate.toLocaleDateString("en-US") + 7;
+import moment from "moment";
 
 let initialState = {
     data: {
         name: "Назва походу",
-        dateFrom: new Date().toLocaleDateString("en-US"),
-        dateTo: lastdate,
+        dateFrom: moment(new Date()).format("YYYY-MM-DD"),
+        dateTo: moment(new Date()).add(7, "days").format("YYYY-MM-DD"),
         countBicycle: 20,
-        difficulty: 3,
         price: 0,
-        guide: [],
-        route: routes,
         photo: null
     }
 };

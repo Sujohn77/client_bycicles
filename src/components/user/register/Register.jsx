@@ -11,61 +11,25 @@ import { StylesProvider } from "@material-ui/styles";
 import { Col } from "components/layout/grid";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
+import BaseModal from "../../../modules/modal/BaseModal";
+import { stopSubmit } from "redux-form";
+import { access } from "constants";
 
-const Register = ({ accessUser, setRegister, signUp }) => {
-    let [opened, setOpened] = useState(false);
-    let nodeRef = useRef(null);
-
+const Register = ({ signUp, open, setOpen, accessUser }) => {
+    const onClick = () => setOpenModal(true);
     useEffect(() => {
-        if (accessUser) {
-            setOpened(false);
+        if (accessUser >= access.user) {
+            setOpen(false);
         }
     }, [accessUser]);
-
-    const onSubmit = values => {
-        signUp(values);
+    const onSubmit = data => {
+        signUp(data);
     };
-
-    const handleClick = opened => {
-        if (!opened) {
-            document.addEventListener("click", handleOutsideClick, false);
-        } else {
-            document.removeEventListener("click", handleOutsideClick, false);
-        }
-        setOpened(!opened);
-    };
-
-    const handleOutsideClick = e => {
-        if (!nodeRef.current.contains(e.target)) {
-            handleClick(true);
-        }
-    };
-
     return (
-        <div ref={nodeRef}>
-            <ModalWindow
-                opened={opened}
-                onClickOutside={() => setOpened(false)}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <ModalContent>
-                    <RegisterForm onSubmit={onSubmit} />
-                </ModalContent>
-            </ModalWindow>
-            <Col>
-                <Button type="button" onClick={() => handleClick(false)} className="nav-btn">
-                    Регістрація
-                </Button>
-            </Col>
-        </div>
+        <BaseModal initialOpened={open}>
+            <RegisterForm onSubmit={onSubmit} />
+        </BaseModal>
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        accessUser: state.currentUser.access
-    };
-};
-
-export default connect(mapStateToProps, { signUp })(Register);
+export default connect(null, { signUp })(Register);

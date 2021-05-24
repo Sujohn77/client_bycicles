@@ -114,7 +114,7 @@ $colors: map-merge(
     $colors
 );
 
-$primary: $blue !default;
+$primary: #138cd7 !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -401,5 +401,6 @@ $input-btn-border-width: $border-width !default;
 $modal_background: #1a2528;
 $modal-content__color: $gray-200;
 $modal_text-color: #138cd7;
-$btn_success: rgba(90, 182, 87, 255);
-$btn_danger: rgba(212, 83, 74, 255);
+$btn_success: #5ab657;
+$btn_danger: #ea4335;
+$btn_warn: #d1e149; ;

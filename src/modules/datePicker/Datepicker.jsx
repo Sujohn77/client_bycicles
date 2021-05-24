@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Calendar from "../Calendar/Calendar";
 import * as Styled from "./styles.js";
-import { isDate, getDateISO } from "../../helpers/calendar";
+import { isDate, getDateISO } from "helpers/calendar";
 
 class Datepicker extends React.Component {
     state = { date: null, calendarOpen: false };

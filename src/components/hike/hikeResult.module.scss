@@ -1,0 +1,116 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+$button_hover: #138cd7;
+
+@keyframes button {
+    0% {
+        width: 0;
+        padding: 0;
+    }
+
+    100% {
+        width: 110px;
+        padding: 6px 8px;
+    }
+}
+
+.hike__container {
+    display: flex;
+    padding: 0 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include media-breakpoint-down(md) {
+        flex-wrap: wrap;
+    }
+}
+
+.trip__result {
+    max-width: 450px;
+    border: 1px solid $border_edit_color;
+    height: 300px;
+    transition: all 0.3s ease-in;
+    width: 100%;
+    margin-right: 15px;
+    margin-top: 1rem;
+    padding: 15px;
+    cursor: pointer;
+    .buttons {
+        display: flex;
+    }
+    button {
+        width: min-content;
+        white-space: nowrap;
+        background: $input_background;
+        height: 40px;
+        &:hover {
+            background: $button_hover;
+            span {
+                color: #fff;
+            }
+        }
+    }
+    .accept {
+        transition: all 0.3s ease-in;
+        width: 0px;
+        display: none;
+        margin-left: 1rem;
+        min-width: initial;
+    }
+    .content {
+        display: flex;
+        overflow: hidden;
+        height: calc(100% - 65px);
+        text-overflow: ellipsis;
+
+        .description {
+            margin-left: 30px;
+        }
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    &:hover {
+        @include box-shadow;
+        border: 1px solid $border_color;
+        .accept {
+            width: min-content;
+            display: block;
+            animation: button 0.3s ease-in-out;
+            overflow: hidden;
+        }
+    }
+}
+
+.filter__trips {
+    display: flex;
+    justify-content: center;
+
+    > div {
+        @include box-shadow;
+        width: 200px;
+        padding: 15px;
+        margin: 30px 15px;
+    }
+    @include media-breakpoint-down(lg) {
+        flex-wrap: wrap;
+        > div {
+            width: 250px;
+            margin: 15px;
+            // width: initial;
+            height: initial;
+        }
+    }
+    @include media-breakpoint-down(xs) {
+        > div {
+            width: 100%;
+        }
+    }
+}

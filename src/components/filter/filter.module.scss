@@ -5,19 +5,14 @@
 @import "bootstrap/reboot";
 @import "bicycles/mixins";
 
-.date__container {
-    @include box-shadow;
-    padding: 15px;
-    margin: 30px 15px;
-    height: fit-content;
+.filter__container {
     border: 1px solid $border_color;
-
+    height: 120px;
     .input {
-        height: 30px;
+        height: 34px;
         position: relative;
         background: $input_background;
         border: 1px solid $border_color;
-        height: 30px;
         font-size: 13px;
         display: flex;
         align-items: center;
@@ -39,5 +34,8 @@
     > p {
         text-align: center;
         width: 100%;
+    }
+    :global(.form-group) {
+        border: none;
     }
 }

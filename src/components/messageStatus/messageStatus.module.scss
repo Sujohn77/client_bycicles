@@ -1,0 +1,40 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        display: block;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.message {
+    opacity: 0;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 15px;
+    animation: fadeIn 1s ease-out;
+    > div {
+        padding: 5px 0;
+        margin-bottom: 0;
+    }
+}
+
+.active {
+    animation: none;
+    display: block;
+    opacity: 1;
+}

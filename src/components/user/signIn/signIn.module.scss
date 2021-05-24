@@ -1,11 +1,50 @@
-.paper {
-    position: fixed;
-    width: 100vh;
-    height: 100vh;
-    background: #000;
-    opacity: 0.2;
-    display: none;
-    .opened {
-        display: block;
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+// .paper {
+//     position: fixed;
+//     width: 100vh;
+//     height: 100vh;
+//     background: #000;
+//     opacity: 0.2;
+//     display: none;
+//     .opened {
+//         display: block;
+//     }
+// }
+
+.login__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    button {
+        color: $button_text;
+        &:first-child {
+            background: $background_button_save;
+        }
+        &:last-child {
+            background: $button_cancel;
+        }
     }
+}
+
+.link {
+    color: $text_color;
+    cursor: pointer;
+    border-bottom: 1px solid $text_color;
+    text-align: right;
+    margin-left: auto;
+    width: fit-content;
+    &:hover {
+        color: #000;
+        border-bottom: 1px solid #000;
+    }
+}
+
+.error {
+    color: $btn_danger;
 }

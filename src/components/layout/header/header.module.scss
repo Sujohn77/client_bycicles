@@ -3,6 +3,11 @@
 
 $header-background: #138cd7;
 
+:global(span.active_ukrainian:first-child),
+:global(span.active_russian:last-child) {
+    border-bottom: 1px solid #fff;
+}
+
 .header {
     display: grid;
     grid-template-columns: 8fr 2fr 1fr 1fr;
@@ -10,7 +15,22 @@ $header-background: #138cd7;
     column-gap: 15px;
     background: $header-background;
     padding: 15px 0;
+
     color: #fff;
+    a {
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+        color: #fff;
+    }
+    .signOut {
+        color: #fff;
+        white-space: nowrap;
+    }
+    :global(.modal-sm) > a {
+        color: inherit;
+    }
     :global(.nav-btn) {
         border: none;
         font-size: 16px;
@@ -33,9 +53,9 @@ $header-background: #138cd7;
         }
         span {
             cursor: pointer;
-            &:hover {
-                border-bottom: 1px solid #fff;
-            }
+            // &:hover {
+            //     border-bottom: 1px solid #fff;
+            // }
         }
     }
 }

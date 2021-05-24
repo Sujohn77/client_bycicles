@@ -1,5 +1,5 @@
-import { setFetchStatus } from "./actions";
 import { apiRoot } from "constants";
+import { setFetchStatus } from "components/messageStatus/actions";
 const fetcherLogColor = "background: orange; color:black";
 /**
  *
@@ -54,7 +54,7 @@ export const fetcher = (
     } else {
         apiEndpoint = apiRoot + apiEndpoint;
     }
-    console.log(`%c [Fetcher] apiEndpoint call [${method}]: ${apiEndpoint}`, fetcherLogColor);
+
     // Headers
     let headers = {
         Accept: "application/json",
@@ -69,7 +69,7 @@ export const fetcher = (
     //     headers["X-CSRFToken"] = getState().application.csrf;
     // }
     // console.debug(new Headers(headers));
-    console.log(json);
+
     let fetchOptions = {
         method: method,
         body: json ? JSON.stringify(json) : undefined,
@@ -95,12 +95,11 @@ export const fetcher = (
         })
         .then(response => response.json())
         .then(json => {
-            console.log("%c [Fetcher] Fetch success", fetcherLogColor);
-
             try {
                 onSuccess ? onSuccess(json, dispatch) : false;
             } catch (error) {
-                dispatch(setFetchStatus("error"));
+                console.log(error);
+                dispatch(setFetchStatus(error));
             }
         })
         .catch(error => {

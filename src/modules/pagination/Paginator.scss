@@ -1,0 +1,15 @@
+.list__pages {
+    display: flex;
+}
+.pagination {
+    align-items: center;
+    display: flex;
+}
+span.arrow {
+    font-size: 33px;
+    display: block;
+    font-family: monospace;
+}
+.list__pages span {
+    width: 20px;
+}

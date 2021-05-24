@@ -1,0 +1,18 @@
+@import "bootstrap/variables";
+@import "bootstrap/flex";
+@import "bootstrap/mixins";
+@import "bootstrap/fonts";
+@import "bootstrap/reboot";
+@import "bicycles/mixins";
+
+.login__buttons {
+    button {
+        color: $button_text;
+        &:first-child {
+            background: $background_button_save;
+        }
+        &:last-child {
+            background: $button_cancel;
+        }
+    }
+}
